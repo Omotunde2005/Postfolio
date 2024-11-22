@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loign with X</title>
+</head>
+<body>
+    Click the button below to display API data
+    <button onclick="sendMessage();" class="btn">Get API data</button>
+
+
+    <div id="paragraph-div">
+        
+    </div>
+
+    
+
+    <script>
+
+        const socket = new WebSocket('ws://localhost:8000/add/post/670c4dc1b9a1c6bc0e953bca/?token=my_auth_token');
+
+        function sendMessage() {
+            const message = JSON.stringify({"id": "1", "post": "hshydbdsus76tssr5s"});
+            socket.send(message);
+        };
+
+
+        socket.onmessage = function(event){
+           const paragraph = document.getElementById("paragraph-div");
+           const data = JSON.parse(event.data);
+           console.log(data);
+           paragraph.innerHTML += `<p>${data.message}</p>`;
+        };
+
+    </script>
+
+</body>
+</html>
