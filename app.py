@@ -16,8 +16,7 @@ from urllib.parse import parse_qs
 
 
 app = FastAPI(
-    title="Student Course API",
-    summary="A sample application showing how to use FastAPI to add a ReST API to a MongoDB collection.",
+    title="Postfolio",
 )
 
 
